@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}最新资讯 - 数察{% endblock %}
+
+{% block content %}
+<section style="text-align: center; padding: 2rem 0;">
+    <h1>数察资讯</h1>
+    <p style="color: #666; max-width: 800px; margin: 0 auto;">最新行业动态、平台更新和深度分析</p>
+</section>
+
+<section style="max-width: 900px; margin: 0 auto; padding: 2rem 0;">
+    <!-- 平台动态 -->
+    <div style="background: white; border-radius: 10px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+        <h2 style="color: #4A90E2; margin-top: 0;">平台动态</h2>
+        
+        <div style="border-left: 4px solid #4A90E2; padding-left: 1.5rem; margin: 1.8rem 0;">
+            <h3 style="margin-bottom: 0.3rem;">骑手权益保障平台正式上线</h3>
+            <p style="color: #666; font-size: 0.9rem; margin-top: 0;">2025年3月15日</p>
+            <p>我们正式推出了骑手权益保障平台，提供订单配送智能分析、收入透明度报告、集体发声对话工具等核心功能，助力骑手权益保障。</p>
+            <a href="{{ url_for('service_13') }}" style="color: #4A90E2; text-decoration: none;">了解更多 →</a>
+        </div>
+        
+        <div style="border-left: 4px solid #34C759; padding-left: 1.5rem; margin: 1.8rem 0;">
+            <h3 style="margin-bottom: 0.3rem;">数据驱动增长服务新增季度报告功能</h3>
+            <p style="color: #666; font-size: 0.9rem; margin-top: 0;">2025年3月10日</p>
+            <p>商务端数据服务新增季度增长报告功能，为商家提供更全面的业务洞察和增长建议。</p>
+            <a href="{{ url_for('service_8') }}" style="color: #34C759; text-decoration: none;">了解更多 →</a>
+        </div>
+    </div>
+    
+    <!-- 行业洞察 -->
+    <div style="background: white; border-radius: 10px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+        <h2 style="color: #FF9500; margin-top: 0;">行业洞察</h2>
+        
+        <div style="border-left: 4px solid #FF9500; padding-left: 1.5rem; margin: 1.8rem 0;">
+            <h3 style="margin-bottom: 0.3rem;">本地生活服务行业趋势报告（2025Q1）</h3>
+            <p style="color: #666; font-size: 0.9rem; margin-top: 0;">2025年3月5日</p>
+            <p>基于平台数据，我们分析了第一季度本地生活服务行业的发展趋势，包括用户消费习惯变化、商家经营策略调整等。</p>
+            <a href="#" style="color: #FF9500; text-decoration: none;">下载完整报告 →</a>
+        </div>
+    </div>
+    
+    <!-- 用户故事 -->
+    <div style="background: white; border-radius: 10px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+        <h2 style="color: #AF52DE; margin-top: 0;">用户故事</h2>
+        
+        <div style="border-left: 4px solid #AF52DE; padding-left: 1.5rem; margin: 1.8rem 0;">
+            <h3 style="margin-bottom: 0.3rem;">一家小吃店的数字化突围</h3>
+            <p style="color: #666; font-size: 0.9rem; margin-top: 0;">2025年2月28日</p>
+            <p>传统小吃店「味香园」通过数察流量智能诊断系统，发现自身在搜索流量上的短板，针对性优化后，线上订单量三个月增长120%。</p>
+            <a href="{{ url_for('service_6') }}" style="color: #AF52DE; text-decoration: none;">阅读完整故事 →</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,278 @@
+{% extends "base.html" %}
+
+{% block title %}订单配送分析系统 - 数察{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- 页面标题 -->
+    <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
+        <h1 class="text-2xl font-bold" style="color: #37A5E6;">订单配送智能分析</h1>
+        <p class="text-gray-600 mt-2">派单合理性诊断、路径与时间评估</p>
+    </div>
+
+    <!-- 自定义接单偏好设置 -->
+    <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+        <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">自定义接单偏好设置</h2>
+        <div class="bg-white p-4 rounded-lg">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox" checked> <span class="text-sm">顺路单优先</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox" checked> <span class="text-sm">长距离单</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox"> <span class="text-sm">短距离单</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                    <input type="checkbox"> <span class="text-sm">高价单优先</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- 派单合理性诊断 + 路径与时间评估 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 派单合理性诊断 - 柱状图 -->
+        <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">派单合理性诊断</h2>
+            <div class="bg-white p-4 rounded-lg">
+                <p class="text-sm text-gray-600 mb-3">对比同一区域、相同时段内不同骑手接收的订单数量</p>
+                <div id="barChart" style="width: 100%; height: 250px;"></div>
+                <div class="flex justify-center mt-3 text-xs text-gray-500">
+                    <span class="mx-2"><span class="inline-block w-3 h-3" style="background-color: #37A5E6;"></span> 您 (28单)</span>
+                    <span class="mx-2"><span class="inline-block w-3 h-3" style="background-color: #A7D1F3;"></span> 骑手A (32单)</span>
+                    <span class="mx-2"><span class="inline-block w-3 h-3" style="background-color: #DBF6FF;"></span> 骑手B (24单)</span>
+                    <span class="mx-2"><span class="inline-block w-3 h-3" style="background-color: #ccc;"></span> 骑手C (19单)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路径与时间评估 - 折线图 -->
+        <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">路径与时间评估</h2>
+            <div class="bg-white p-4 rounded-lg">
+                <p class="text-sm text-gray-600 mb-3">模型化分析系统建议配送路径与时间的合理性</p>
+                <div id="lineChart" style="width: 100%; height: 250px;"></div>
+                <div class="flex justify-center mt-3 text-xs text-gray-500">
+                    <span class="mx-2"><span class="inline-block w-3 h-3" style="background-color: #37A5E6;"></span> 实际时间</span>
+                    <span class="mx-2"><span class="inline-block w-3 h-3" style="background-color: #FF6B6B;"></span> 系统预估</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 极限配送任务标识 -->
+    <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+        <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">极限配送任务标识</h2>
+        <div class="bg-white p-4 rounded-lg">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="border border-red-200 bg-red-50 p-3 rounded-lg">
+                    <p class="font-medium text-red-600">订单 #A001</p>
+                    <p class="text-xs mt-1">商家→用户：3.2km | 预估：28min</p>
+                    <p class="text-xs text-red-600">超时风险：高 | 安全压力：大</p>
+                </div>
+                <div class="border border-orange-200 bg-orange-50 p-3 rounded-lg">
+                    <p class="font-medium text-orange-600">订单 #B045</p>
+                    <p class="text-xs mt-1">商家→用户：4.5km | 预估：35min</p>
+                    <p class="text-xs text-orange-600">超时风险：中 | 安全压力：中</p>
+                </div>
+                <div class="border border-yellow-200 bg-yellow-50 p-3 rounded-lg">
+                    <p class="font-medium text-yellow-600">订单 #C123</p>
+                    <p class="text-xs mt-1">商家→用户：2.8km | 预估：22min</p>
+                    <p class="text-xs text-yellow-600">超时风险：中 | 安全压力：低</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 骑手实时定位/跑单轨迹 - 真实图表 -->
+    <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+        <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">骑手实时定位 · 跑单轨迹</h2>
+        <div class="bg-white p-4 rounded-lg">
+            <!-- 模拟地图（已替换虚拟文字） -->
+            <div class="relative h-80 bg-gray-100 rounded-lg overflow-hidden border-2 border-primary-200">
+                <!-- 网格背景 -->
+                <div class="absolute inset-0" style="background-image: linear-gradient(#ccc 1px, transparent 1px), linear-gradient(90deg, #ccc 1px, transparent 1px); background-size: 20px 20px;"></div>
+                
+                <!-- 当前位置标记 -->
+                <div class="absolute" style="left: 120px; top: 80px;">
+                    <div class="w-5 h-5 bg-red-500 rounded-full animate-ping absolute"></div>
+                    <div class="w-5 h-5 bg-red-500 rounded-full relative"></div>
+                    <div class="text-xs bg-white px-2 py-1 rounded shadow absolute -bottom-8 left-0 whitespace-nowrap">当前位置 · 15:30</div>
+                </div>
+                
+                <!-- 跑单轨迹线 -->
+                <svg class="absolute inset-0" style="width: 100%; height: 100%;">
+                    <path d="M 120 80 L 180 120 L 240 90 L 300 130 L 360 100" stroke="#37A5E6" stroke-width="4" fill="none" stroke-dasharray="8 4"/>
+                    <circle cx="120" cy="80" r="6" fill="#37A5E6"/>
+                    <circle cx="180" cy="120" r="6" fill="#37A5E6"/>
+                    <circle cx="240" cy="90" r="6" fill="#37A5E6"/>
+                    <circle cx="300" cy="130" r="6" fill="#37A5E6"/>
+                    <circle cx="360" cy="100" r="6" fill="#37A5E6"/>
+                </svg>
+                
+                <!-- 商家标记 -->
+                <div class="absolute" style="left: 175px; top: 115px;">
+                    <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                    <div class="text-xs bg-white px-1 rounded absolute -bottom-5">商家A</div>
+                </div>
+                <div class="absolute" style="left: 235px; top: 85px;">
+                    <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                    <div class="text-xs bg-white px-1 rounded absolute -bottom-5">商家B</div>
+                </div>
+                <div class="absolute" style="left: 295px; top: 125px;">
+                    <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                    <div class="text-xs bg-white px-1 rounded absolute -bottom-5">商家C</div>
+                </div>
+                
+                <!-- 用户标记 -->
+                <div class="absolute" style="left: 355px; top: 95px;">
+                    <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
+                    <div class="text-xs bg-white px-1 rounded absolute -bottom-5">用户</div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-4 mt-4">
+                <div class="text-center">
+                    <p class="text-sm font-medium" style="color: #37A5E6;">今日已跑</p>
+                    <p class="text-xl font-bold">32.5 km</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-sm font-medium" style="color: #37A5E6;">当前订单</p>
+                    <p class="text-xl font-bold">3 单</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-sm font-medium" style="color: #37A5E6;">出餐效率</p>
+                    <p class="text-xl font-bold">8 min/单</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 配送最优路线 - 真实图表 -->
+    <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+        <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">配送最优路线</h2>
+        <div class="bg-white p-4 rounded-lg">
+            <!-- 模拟路线图（已替换虚拟文字） -->
+            <div class="relative h-80 bg-gray-100 rounded-lg overflow-hidden border-2 border-primary-200">
+                <!-- 网格背景 -->
+                <div class="absolute inset-0" style="background-image: linear-gradient(#ccc 1px, transparent 1px), linear-gradient(90deg, #ccc 1px, transparent 1px); background-size: 20px 20px;"></div>
+                
+                <!-- 推荐路线（实线） -->
+                <svg class="absolute inset-0" style="width: 100%; height: 100%;">
+                    <path d="M 50 180 L 120 150 L 200 100 L 280 120 L 350 80" stroke="#37A5E6" stroke-width="4" fill="none"/>
+                    <!-- 备选路线（虚线） -->
+                    <path d="M 50 180 L 150 160 L 220 140 L 300 150 L 350 80" stroke="#A7D1F3" stroke-width="3" fill="none" stroke-dasharray="6 4"/>
+                </svg>
+                
+                <!-- 起点 -->
+                <div class="absolute" style="left: 45px; top: 175px;">
+                    <div class="w-4 h-4 bg-green-600 rounded-full"></div>
+                    <div class="text-xs bg-white px-1 rounded absolute -bottom-5">起点</div>
+                </div>
+                
+                <!-- 途经点 -->
+                <div class="absolute" style="left: 115px; top: 145px;">
+                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div class="text-xs bg-white px-1 rounded absolute -bottom-5">商家1</div>
+                </div>
+                <div class="absolute" style="left: 195px; top: 95px;">
+                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div class="text-xs bg-white px-1 rounded absolute -bottom-5">商家2</div>
+                </div>
+                <div class="absolute" style="left: 275px; top: 115px;">
+                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div class="text-xs bg-white px-1 rounded absolute -bottom-5">商家3</div>
+                </div>
+                
+                <!-- 终点 -->
+                <div class="absolute" style="left: 345px; top: 75px;">
+                    <div class="w-4 h-4 bg-red-600 rounded-full"></div>
+                    <div class="text-xs bg-white px-1 rounded absolute -bottom-5">终点</div>
+                </div>
+            </div>
+            
+            <div class="flex justify-between mt-4">
+                <div>
+                    <p class="text-sm font-medium">推荐路线</p>
+                    <p class="text-xs text-gray-500">距离：8.2km | 预估：28分钟</p>
+                </div>
+                <div>
+                    <p class="text-sm font-medium">备选路线</p>
+                    <p class="text-xs text-gray-500">距离：9.5km | 预估：35分钟</p>
+                </div>
+                <button class="px-4 py-1 text-white rounded-lg text-sm" style="background-color: #37A5E6;">开始导航</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ECharts脚本 -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 柱状图 - 派单合理性诊断
+        var barChart = echarts.init(document.getElementById('barChart'));
+        barChart.setOption({
+            tooltip: { trigger: 'axis' },
+            xAxis: { 
+                type: 'category', 
+                data: ['您', '骑手A', '骑手B', '骑手C', '骑手D', '骑手E'],
+                axisLabel: { fontSize: 10 }
+            },
+            yAxis: { type: 'value', name: '订单数量' },
+            series: [{
+                data: [28, 32, 24, 19, 22, 27],
+                type: 'bar',
+                itemStyle: {
+                    color: function(params) {
+                        var colors = ['#37A5E6', '#A7D1F3', '#DBF6FF', '#ccc', '#A7D1F3', '#DBF6FF'];
+                        return colors[params.dataIndex];
+                    }
+                },
+                barWidth: 20
+            }]
+        });
+
+        // 折线图 - 路径与时间评估
+        var lineChart = echarts.init(document.getElementById('lineChart'));
+        lineChart.setOption({
+            tooltip: { trigger: 'axis' },
+            legend: { show: false },
+            xAxis: { 
+                type: 'category', 
+                data: ['订单1', '订单2', '订单3', '订单4', '订单5', '订单6'],
+                axisLabel: { fontSize: 10 }
+            },
+            yAxis: { type: 'value', name: '时间(分钟)' },
+            series: [
+                {
+                    name: '实际时间',
+                    data: [18, 22, 20, 25, 28, 24],
+                    type: 'line',
+                    smooth: true,
+                    lineStyle: { color: '#37A5E6', width: 3 },
+                    symbol: 'circle',
+                    symbolSize: 8
+                },
+                {
+                    name: '系统预估',
+                    data: [15, 18, 16, 20, 22, 19],
+                    type: 'line',
+                    smooth: true,
+                    lineStyle: { color: '#FF6B6B', width: 3, type: 'dashed' },
+                    symbol: 'diamond',
+                    symbolSize: 8
+                }
+            ]
+        });
+
+        // 窗口大小变化时自适应
+        window.addEventListener('resize', function() {
+            barChart.resize();
+            lineChart.resize();
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}商家服务 - 数察{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- 页面标题 -->
+    <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
+        <h1 class="text-2xl font-bold" style="color: #37A5E6;">商家服务</h1>
+        <p class="text-gray-600 mt-2">为商家提供数据洞察与增长工具</p>
+    </div>
+
+    <!-- 三个核心功能卡片 -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 流量智能诊断系统 -->
+        <a href="{{ url_for('service_6') }}" class="block bg-primary-50 rounded-xl p-5 border border-primary-200 hover:shadow-lg transition">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">流量智能诊断系统</h2>
+            <p class="text-sm text-gray-600 mb-4">横向对比、纵向对比、经营漏洞定位</p>
+            <div class="bg-white p-4 rounded-lg border border-primary-200">
+                <p class="text-xs text-gray-500">· 周期平台算法分配</p>
+                <p class="text-xs text-gray-500">· 同类型商家分析</p>
+                <p class="text-xs text-gray-500">· 经营漏洞风险整改</p>
+            </div>
+            <div class="mt-4 inline-block px-4 py-2 text-white text-sm rounded-full" style="background-color: #37A5E6;">进入分析 →</div>
+        </a>
+
+        <!-- 协商谈判平台 -->
+        <a href="{{ url_for('service_7') }}" class="block bg-primary-50 rounded-xl p-5 border border-primary-200 hover:shadow-lg transition">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">协商谈判平台</h2>
+            <p class="text-sm text-gray-600 mb-4">话语权赋能、协商渠道、阳光监督</p>
+            <div class="bg-white p-4 rounded-lg border border-primary-200">
+                <p class="text-xs text-gray-500">· 行业健康度白皮书</p>
+                <p class="text-xs text-gray-500">· 谈判话术模板、案例库</p>
+                <p class="text-xs text-gray-500">· 阳光公告模块</p>
+            </div>
+            <div class="mt-4 inline-block px-4 py-2 text-white text-sm rounded-full" style="background-color: #37A5E6;">进入平台 →</div>
+        </a>
+
+        <!-- 数据驱动增长服务 -->
+        <a href="{{ url_for('service_8') }}" class="block bg-primary-50 rounded-xl p-5 border border-primary-200 hover:shadow-lg transition">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">数据驱动增长服务</h2>
+            <p class="text-sm text-gray-600 mb-4">个性化分析报告、竞争情报监控</p>
+            <div class="bg-white p-4 rounded-lg border border-primary-200">
+                <p class="text-xs text-gray-500">· 定制营销策略</p>
+                <p class="text-xs text-gray-500">· 库存优化方案</p>
+                <p class="text-xs text-gray-500">· 广告投放建议</p>
+                <p class="text-xs text-gray-500">· 实时追踪竞品动态</p>
+            </div>
+            <div class="mt-4 inline-block px-4 py-2 text-white text-sm rounded-full" style="background-color: #37A5E6;">了解服务 →</div>
+        </a>
+    </div>
+</div>
+{% endblock %}

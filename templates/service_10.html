@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}一站式维权中心 - 数察{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- 页面标题 -->
+    <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
+        <h1 class="text-2xl font-bold" style="color: #37A5E6;">一站式维权中心</h1>
+        <p class="text-gray-600 mt-2">小额简单维权、绿色维权通道、法律服务对接</p>
+    </div>
+
+    <!-- 小额简单维权 -->
+    <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+        <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">小额简单维权</h2>
+        <div class="bg-white p-4 rounded-lg">
+            <div class="space-y-3">
+                <input type="text" placeholder="订单编号" class="w-full border border-primary-200 rounded-lg p-2">
+                <select class="w-full border border-primary-200 rounded-lg p-2">
+                    <option>质量问题</option>
+                    <option>少发漏发</option>
+                    <option>错发商品</option>
+                    <option>配送延迟</option>
+                </select>
+                <textarea rows="2" placeholder="问题描述" class="w-full border border-primary-200 rounded-lg p-2"></textarea>
+                <button class="w-full py-2 text-white rounded-lg" style="background-color: #37A5E6;">提交维权</button>
+                <p class="text-sm text-center text-green-600">已锁定有关商家和平台处理</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 绿色维权通道 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">绿色维权通道</h2>
+            <div class="bg-white p-4 rounded-lg">
+                <div class="space-y-3">
+                    <input type="text" placeholder="订单编号" class="w-full border border-primary-200 rounded-lg p-2">
+                    <select class="w-full border border-primary-200 rounded-lg p-2">
+                        <option>假冒伪劣</option>
+                        <option>欺诈销售</option>
+                        <option>人身伤害</option>
+                        <option>其他严重问题</option>
+                    </select>
+                    <textarea rows="2" placeholder="问题描述" class="w-full border border-primary-200 rounded-lg p-2"></textarea>
+                    <button class="w-full py-2 text-white rounded-lg" style="background-color: #37A5E6;">提交</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">进度查询</h2>
+            <div class="bg-white p-4 rounded-lg">
+                <div class="space-y-3">
+                    <input type="text" placeholder="维权编号" class="w-full border border-primary-200 rounded-lg p-2">
+                    <button class="w-full py-2 text-white rounded-lg" style="background-color: #37A5E6;">查询</button>
+                    <div class="border-t pt-3">
+                        <p class="text-sm">维权编号：WQ20250221001</p>
+                        <p class="text-xs text-gray-500">状态：平台处理中</p>
+                        <p class="text-xs text-gray-500">更新：2026-02-21 14:30</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 现有维权途径 + 法律服务对接窗口 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">现有维权途径</h2>
+            <div class="bg-white p-4 rounded-lg">
+                <ul class="space-y-2 text-sm">
+                    <li class="border-b pb-2">
+                        <span class="font-medium">平台内部投诉</span>
+                        <p class="text-xs text-gray-500">处理时间：3-7个工作日 | 成功率：约65%</p>
+                    </li>
+                    <li class="border-b pb-2">
+                        <span class="font-medium">12315投诉</span>
+                        <p class="text-xs text-gray-500">处理时间：7-15个工作日 | 成功率：约80%</p>
+                    </li>
+                    <li class="border-b pb-2">
+                        <span class="font-medium">法院诉讼</span>
+                        <p class="text-xs text-gray-500">处理时间：3-6个月 | 成功率：约90%</p>
+                    </li>
+                    <li>
+                        <span class="font-medium">消费仲裁</span>
+                        <p class="text-xs text-gray-500">处理时间：1-2个月 | 成功率：约75%</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">法律服务对接窗口</h2>
+            <div class="bg-white p-4 rounded-lg">
+                <div class="space-y-3">
+                    <select class="w-full border border-primary-200 rounded-lg p-2">
+                        <option>在线咨询</option>
+                        <option>文书生成</option>
+                        <option>代理诉讼</option>
+                    </select>
+                    <select class="w-full border border-primary-200 rounded-lg p-2">
+                        <option>消费维权</option>
+                        <option>合同纠纷</option>
+                        <option>劳动争议</option>
+                    </select>
+                    <button class="w-full py-2 text-white rounded-lg" style="background-color: #37A5E6;">对接律师</button>
+                    <p class="text-xs text-center text-gray-500">合作律所：XX律师事务所、YY法律服务中心</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

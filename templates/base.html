@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}数察 · 商业生态洞察{% endblock %}</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 自定义颜色配置（使用您的四色） -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#EEF8FE',   // 背景浅蓝
+                            100: '#DBF6FF',  // 卡片底纹
+                            200: '#A7D1F3',  // 次级蓝
+                            300: '#37A5E6',  // 主按钮/强调蓝
+                        }
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Flowbite 组件库（用于交互） -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <!-- ECharts -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-primary-50 font-sans antialiased">
+
+    <!-- 导航栏（半透明白+您的蓝色系） -->
+    <nav class="bg-white/80 backdrop-blur-md border-b border-primary-200/50 shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo区域 -->
+                <div class="flex items-center space-x-3">
+                    <a href="{{ url_for('home') }}" class="flex items-center space-x-2 group">
+                        <img src="{{ url_for('static', filename='logo.png') }}" class="h-8 w-auto transition-transform duration-300 group-hover:scale-110" alt="数察">
+                        <span class="text-xl font-bold text-primary-300">
+                            数察
+                        </span>
+                    </a>
+                </div>
+
+                <!-- 右侧导航 -->
+                <div class="flex items-center space-x-6">
+                    <div class="hidden md:flex items-center space-x-5">
+                        <a href="{{ url_for('home') }}" class="text-gray-600 hover:text-primary-300 font-medium transition-colors duration-200 relative group">
+                            首页
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-300 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="{{ url_for('about') }}" class="text-gray-600 hover:text-primary-300 font-medium transition-colors duration-200 relative group">
+                            关于我们
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-300 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                        <a href="{{ url_for('news') }}" class="text-gray-600 hover:text-primary-300 font-medium transition-colors duration-200 relative group">
+                            资讯
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-300 transition-all duration-300 group-hover:w-full"></span>
+                        </a>
+                    </div>
+
+                    <!-- 搜索框（主色边框） -->
+                    <div class="hidden md:block relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-4 w-4 text-primary-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linecap="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                        <input type="text" class="block w-64 pl-10 pr-3 py-2 border border-primary-200 rounded-full text-sm placeholder-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-transparent" placeholder="搜索服务、资讯...">
+                    </div>
+
+                    <!-- 个人中心 -->
+                    <a href="{{ url_for('profile') }}" class="flex items-center space-x-1 text-gray-600 hover:text-primary-300 font-medium transition-colors duration-200 group">
+                        <svg class="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linecap="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        <span>个人中心</span>
+                    </a>
+
+                    <!-- 移动端菜单按钮 -->
+                    <button type="button" class="md:hidden text-gray-600 hover:text-primary-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区（使用您的配色） -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white/90 rounded-2xl shadow-lg border border-primary-200/50 p-6 md:p-8" style="background-color: #FFFFFF; border-color: #A7D1F3;">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- 页脚（使用主色） -->
+    <footer class="bg-primary-300 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <p class="text-center text-sm text-white/90">© 2025 数察平台 · 本演示版本所有数据均为模拟生成，仅用于概念验证。</p>
+        </div>
+    </footer>
+
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

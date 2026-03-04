@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}消费者服务 - 数察{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- 页面标题 -->
+    <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
+        <h1 class="text-2xl font-bold" style="color: #37A5E6;">消费者服务</h1>
+        <p class="text-gray-600 mt-2">为消费者提供决策支持与维权保障</p>
+    </div>
+
+    <!-- 两个核心功能卡片 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 消费决策助手 -->
+        <a href="{{ url_for('service_9') }}" class="block bg-primary-50 rounded-xl p-5 border border-primary-200 hover:shadow-lg transition">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">消费决策助手</h2>
+            <p class="text-sm text-gray-600 mb-4">全网比价、真实口碑、个性化推荐</p>
+            <div class="bg-white p-4 rounded-lg border border-primary-200">
+                <p class="text-xs text-gray-500">· 历史价格查询与预测</p>
+                <p class="text-xs text-gray-500">· 同款商品全网比价</p>
+                <p class="text-xs text-gray-500">· 个性化优惠管理</p>
+            </div>
+            <div class="mt-4 inline-block px-4 py-2 text-white text-sm rounded-full" style="background-color: #37A5E6;">进入助手 →</div>
+        </a>
+
+        <!-- 一站式维权中心 -->
+        <a href="{{ url_for('service_10') }}" class="block bg-primary-50 rounded-xl p-5 border border-primary-200 hover:shadow-lg transition">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">一站式维权中心</h2>
+            <p class="text-sm text-gray-600 mb-4">维权路径导航、成本评估、法律对接</p>
+            <div class="bg-white p-4 rounded-lg border border-primary-200">
+                <p class="text-xs text-gray-500">· 智能推荐最优维权路径</p>
+                <p class="text-xs text-gray-500">· 时间/金钱成本估算</p>
+                <p class="text-xs text-gray-500">· 法律资源对接</p>
+            </div>
+            <div class="mt-4 inline-block px-4 py-2 text-white text-sm rounded-full" style="background-color: #37A5E6;">进入中心 →</div>
+        </a>
+    </div>
+</div>
+{% endblock %}

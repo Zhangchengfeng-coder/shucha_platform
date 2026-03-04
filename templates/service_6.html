@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+
+{% block title %}流量智能诊断系统 - 数察{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- 页面标题 -->
+    <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
+        <h1 class="text-2xl font-bold" style="color: #37A5E6;">流量智能诊断系统</h1>
+        <p class="text-gray-600 mt-2">横向对比、纵向对比、经营漏洞定位</p>
+        <div class="mt-2 inline-block px-3 py-1 bg-blue-100 text-sm rounded-full" style="color: #37A5E6;">开放放款·半片模式</div>
+    </div>
+
+    <!-- 第一行：周期平台算法分配 + 周期历史数据 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 周期平台算法分配 -->
+        <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">周期平台算法分配</h2>
+            <div class="bg-white p-4 rounded-lg">
+                <div id="pieChart" style="width: 100%; height: 250px;"></div>
+                <div class="flex justify-center mt-3 text-sm text-gray-600">
+                    <span class="mx-2"><span class="inline-block w-3 h-3 rounded-full" style="background-color: #37A5E6;"></span> 智能分配 45%</span>
+                    <span class="mx-2"><span class="inline-block w-3 h-3 rounded-full" style="background-color: #A7D1F3;"></span> 手动分配 30%</span>
+                    <span class="mx-2"><span class="inline-block w-3 h-3 rounded-full" style="background-color: #DBF6FF;"></span> 预留流量 25%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 周期历史数据 -->
+        <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">周期历史数据</h2>
+            <div class="bg-white p-4 rounded-lg">
+                <div id="lineChart" style="width: 100%; height: 250px;"></div>
+                <div class="flex justify-between mt-3 text-xs text-gray-500">
+                    <span>周一</span><span>周二</span><span>周三</span><span>周四</span><span>周五</span><span>周六</span><span>周日</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第二行：同类型商家分析 + 商家经营漏洞风险 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 同类型商家分析 -->
+        <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">同类型商家分析</h2>
+            <div class="bg-white p-4 rounded-lg">
+                <!-- 热门单品价格带 -->
+                <div class="mb-4">
+                    <h3 class="text-sm font-medium text-gray-700 mb-2">热门单品价格带</h3>
+                    <div class="flex items-end space-x-2 h-24">
+                        <div class="flex-1 flex flex-col items-center">
+                            <div class="w-full bg-blue-200" style="height: 40px; background-color: #A7D1F3;"></div>
+                            <span class="text-xs mt-1">20-30元</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center">
+                            <div class="w-full" style="height: 70px; background-color: #37A5E6;"></div>
+                            <span class="text-xs mt-1">30-40元</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center">
+                            <div class="w-full bg-blue-200" style="height: 55px; background-color: #A7D1F3;"></div>
+                            <span class="text-xs mt-1">40-50元</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center">
+                            <div class="w-full bg-blue-200" style="height: 30px; background-color: #A7D1F3;"></div>
+                            <span class="text-xs mt-1">50元以上</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 正面评价与差评关键词 -->
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <h3 class="text-sm font-medium text-green-600 mb-2">正面关键词</h3>
+                        <div class="flex flex-wrap gap-1">
+                            <span class="px-2 py-1 bg-green-50 text-green-700 text-xs rounded">份量大</span>
+                            <span class="px-2 py-1 bg-green-50 text-green-700 text-xs rounded">味道好</span>
+                            <span class="px-2 py-1 bg-green-50 text-green-700 text-xs rounded">包装严实</span>
+                            <span class="px-2 py-1 bg-green-50 text-green-700 text-xs rounded">配送快</span>
+                            <span class="px-2 py-1 bg-green-50 text-green-700 text-xs rounded">性价比高</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium text-red-600 mb-2">差评关键词</h3>
+                        <div class="flex flex-wrap gap-1">
+                            <span class="px-2 py-1 bg-red-50 text-red-700 text-xs rounded">太咸</span>
+                            <span class="px-2 py-1 bg-red-50 text-red-700 text-xs rounded">配送慢</span>
+                            <span class="px-2 py-1 bg-red-50 text-red-700 text-xs rounded">漏送</span>
+                            <span class="px-2 py-1 bg-red-50 text-red-700 text-xs rounded">价格贵</span>
+                            <span class="px-2 py-1 bg-red-50 text-red-700 text-xs rounded">份量少</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 区域同品类优质商家典型示范 -->
+                <div>
+                    <h3 class="text-sm font-medium text-gray-700 mb-2">区域同品类优质商家典型示范</h3>
+                    <table class="w-full text-xs">
+                        <thead>
+                            <tr class="border-b">
+                                <th class="text-left py-1">指标</th>
+                                <th class="text-left py-1">您的店铺</th>
+                                <th class="text-left py-1">优质商家</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>店铺曝光率</td><td>72%</td><td>89%</td></tr>
+                            <tr><td>点击转化率</td><td>8.5%</td><td>12.3%</td></tr>
+                            <tr><td>下单转化率</td><td>5.2%</td><td>7.8%</td></tr>
+                            <tr><td>出餐超时率</td><td>3.5%</td><td>1.2%</td></tr>
+                            <tr><td>好评率</td><td>92%</td><td>97%</td></tr>
+                            <tr><td>单品毛利率</td><td>45%</td><td>52%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 商家经营漏洞风险 -->
+        <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">商家经营漏洞风险</h2>
+            <div class="bg-white p-4 rounded-lg space-y-4">
+                <div>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span>定价策略风险</span>
+                        <span class="font-medium" style="color: #37A5E6;">75%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="h-2.5 rounded-full" style="background-color: #37A5E6; width: 75%;"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">整改方案：优化套餐组合，提升客单价</p>
+                    <p class="text-xs text-blue-600 mt-1">整改进度：进行中</p>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span>流量转化风险</span>
+                        <span class="font-medium" style="color: #37A5E6;">45%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="h-2.5 rounded-full" style="background-color: #37A5E6; width: 45%;"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">整改方案：优化商品详情页，增加好评展示</p>
+                    <p class="text-xs text-blue-600 mt-1">整改进度：未开始</p>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span>库存周转风险</span>
+                        <span class="font-medium" style="color: #37A5E6;">30%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="h-2.5 rounded-full" style="background-color: #37A5E6; width: 30%;"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">整改方案：设置爆款预警，及时补货</p>
+                    <p class="text-xs text-blue-600 mt-1">整改进度：已完成</p>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span>竞争排名风险</span>
+                        <span class="font-medium" style="color: #37A5E6;">60%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="h-2.5 rounded-full" style="background-color: #37A5E6; width: 60%;"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">整改方案：参与平台活动，提升曝光</p>
+                    <p class="text-xs text-blue-600 mt-1">整改进度：进行中</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ECharts脚本 -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 饼图
+        var pieChart = echarts.init(document.getElementById('pieChart'));
+        pieChart.setOption({
+            tooltip: { trigger: 'item' },
+            legend: { show: false },
+            series: [{
+                type: 'pie',
+                radius: '70%',
+                data: [
+                    { value: 45, name: '智能分配', itemStyle: { color: '#37A5E6' } },
+                    { value: 30, name: '手动分配', itemStyle: { color: '#A7D1F3' } },
+                    { value: 25, name: '预留流量', itemStyle: { color: '#DBF6FF' } }
+                ],
+                emphasis: { scale: true }
+            }]
+        });
+
+        // 折线图
+        var lineChart = echarts.init(document.getElementById('lineChart'));
+        lineChart.setOption({
+            tooltip: { trigger: 'axis' },
+            xAxis: { 
+                type: 'category', 
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                show: false
+            },
+            yAxis: { type: 'value', show: false },
+            grid: { left: '3%', right: '3%', top: '15%', bottom: '3%' },
+            series: [{
+                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                type: 'line',
+                smooth: true,
+                lineStyle: { color: '#37A5E6', width: 3 },
+                areaStyle: { color: '#DBF6FF' }
+            }]
+        });
+
+        // 窗口大小变化时自适应
+        window.addEventListener('resize', function() {
+            pieChart.resize();
+            lineChart.resize();
+        });
+    });
+</script>
+{% endblock %}

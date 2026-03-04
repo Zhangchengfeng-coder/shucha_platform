@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}骑手服务 - 数察{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- 页面标题 -->
+    <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
+        <h1 class="text-2xl font-bold" style="color: #37A5E6;">骑手服务</h1>
+        <p class="text-gray-600 mt-2">为骑手提供订单分析与权益保障</p>
+    </div>
+
+    <!-- 两个核心功能卡片 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 订单配送分析系统 -->
+        <a href="{{ url_for('service_11') }}" class="block bg-primary-50 rounded-xl p-5 border border-primary-200 hover:shadow-lg transition">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">订单配送智能分析</h2>
+            <p class="text-sm text-gray-600 mb-4">派单合理性诊断、路径与时间评估</p>
+            <div class="bg-white p-4 rounded-lg border border-primary-200">
+                <p class="text-xs text-gray-500">· 对比同一区域骑手订单数量</p>
+                <p class="text-xs text-gray-500">· 识别系统派单是否存在不公</p>
+                <p class="text-xs text-gray-500">· 标识“极限配送任务”</p>
+            </div>
+            <div class="mt-4 inline-block px-4 py-2 text-white text-sm rounded-full" style="background-color: #37A5E6;">进入分析 →</div>
+        </a>
+
+        <!-- 骑手权益保障平台 -->
+        <a href="{{ url_for('service_12') }}" class="block bg-primary-50 rounded-xl p-5 border border-primary-200 hover:shadow-lg transition">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">骑手权益保障平台</h2>
+            <p class="text-sm text-gray-600 mb-4">收入透明度报告、维权入口、安全保障</p>
+            <div class="bg-white p-4 rounded-lg border border-primary-200">
+                <p class="text-xs text-gray-500">· 收入拆解：订单收益/补贴/扣罚</p>
+                <p class="text-xs text-gray-500">· 与平台公开规则比对</p>
+                <p class="text-xs text-gray-500">· 发现异常扣款或未足额补贴</p>
+            </div>
+            <div class="mt-4 inline-block px-4 py-2 text-white text-sm rounded-full" style="background-color: #37A5E6;">查看报告 →</div>
+        </a>
+    </div>
+</div>
+{% endblock %}

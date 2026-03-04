@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}首页 - 数察{% endblock %}
+
+{% block content %}
+<div class="space-y-12">
+    <!-- 1. 数察 - 商业生态洞察平台 -->
+    <div class="bg-primary-50 rounded-xl p-10 border border-primary-200 text-center">
+        <h1 class="text-4xl font-bold mb-4" style="color: #37A5E6;">数察 - 商业生态洞察平台</h1>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">数察是一个连接商家、消费者和骑手的智能化服务平台，通过数据分析和AI技术，为商业生态的各方参与者提供洞察、工具和解决方案，促进更公平、透明、可持续的商业环境。</p>
+    </div>
+
+    <!-- 2. 数察IP形象 -->
+    <div class="bg-primary-50 rounded-xl p-8 border border-primary-200">
+        <h2 class="text-3xl font-bold mb-3 text-center" style="color: #37A5E6;">数察IP形象</h2>
+        <p class="text-center text-gray-600 mb-8 text-lg">我们的数字助手「数小察」，随时为您提供数据洞察和服务支持</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg border border-primary-200 text-center">
+                <div class="h-48 flex items-center justify-center bg-gray-50 rounded mb-3">
+                    <img src="{{ url_for('static', filename='ip_front.png') }}" alt="正面视图" class="max-h-40 object-contain" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=text-gray-400 text-lg>正面视图</span>'">
+                </div>
+                <p class="text-lg font-medium" style="color: #37A5E6;">正面视图</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg border border-primary-200 text-center">
+                <div class="h-48 flex items-center justify-center bg-gray-50 rounded mb-3">
+                    <img src="{{ url_for('static', filename='ip_side.png') }}" alt="侧面视图" class="max-h-40 object-contain" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=text-gray-400 text-lg>侧面视图</span>'">
+                </div>
+                <p class="text-lg font-medium" style="color: #37A5E6;">侧面视图</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg border border-primary-200 text-center">
+                <div class="h-48 flex items-center justify-center bg-gray-50 rounded mb-3">
+                    <img src="{{ url_for('static', filename='ip_back.png') }}" alt="背面视图" class="max-h-40 object-contain" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=text-gray-400 text-lg>背面视图</span>'">
+                </div>
+                <p class="text-lg font-medium" style="color: #37A5E6;">背面视图</p>
+            </div>
+        </div>
+        <p class="text-sm text-gray-400 text-center mt-6">注：请将实际IP形象三视图图片放入static文件夹，并命名为ip_front.png, ip_side.png, ip_back.png</p>
+    </div>
+
+    <!-- 3. 业务服务（三个卡片/按钮） -->
+    <div class="bg-primary-50 rounded-xl p-8 border border-primary-200">
+        <h2 class="text-3xl font-bold mb-3 text-center" style="color: #37A5E6;">业务服务</h2>
+        <p class="text-center text-gray-600 mb-8 text-lg">选择您需要的服务类型，获取定制化的数据洞察和解决方案</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- 商家服务卡片 -->
+            <a href="{{ url_for('business') }}" class="block bg-white p-8 rounded-lg border border-primary-200 hover:shadow-xl transition text-center">
+                <div class="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #DBF6FF;">
+                    <span class="text-4xl" style="color: #37A5E6;">🏢</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3" style="color: #37A5E6;">商家服务</h3>
+                <p class="text-base text-gray-500 mb-6">流量诊断、协商谈判、数据驱动增长</p>
+                <div class="inline-block px-6 py-3 text-white text-base rounded-full" style="background-color: #37A5E6;">进入服务 →</div>
+            </a>
+
+            <!-- 消费者服务卡片 -->
+            <a href="{{ url_for('consumer') }}" class="block bg-white p-8 rounded-lg border border-primary-200 hover:shadow-xl transition text-center">
+                <div class="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #DBF6FF;">
+                    <span class="text-4xl" style="color: #37A5E6;">🛒</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3" style="color: #37A5E6;">消费者服务</h3>
+                <p class="text-base text-gray-500 mb-6">消费决策、维权中心</p>
+                <div class="inline-block px-6 py-3 text-white text-base rounded-full" style="background-color: #37A5E6;">进入服务 →</div>
+            </a>
+
+            <!-- 骑手服务卡片 -->
+            <a href="{{ url_for('rider') }}" class="block bg-white p-8 rounded-lg border border-primary-200 hover:shadow-xl transition text-center">
+                <div class="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #DBF6FF;">
+                    <span class="text-4xl" style="color: #37A5E6;">🛵</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3" style="color: #37A5E6;">骑手服务</h3>
+                <p class="text-base text-gray-500 mb-6">订单分析、权益保障</p>
+                <div class="inline-block px-6 py-3 text-white text-base rounded-full" style="background-color: #37A5E6;">进入服务 →</div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

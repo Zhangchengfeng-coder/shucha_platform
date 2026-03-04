@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}骑手权益保障平台 - 数察{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- 页面标题 -->
+    <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
+        <h1 class="text-2xl font-bold" style="color: #37A5E6;">骑手权益保障平台</h1>
+        <p class="text-gray-600 mt-2">收入透明报告、专属维权入口、安全与保险保障</p>
+    </div>
+
+    <!-- 收入透明报告 -->
+    <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+        <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">收入透明报告</h2>
+        <div class="bg-white p-4 rounded-lg">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div class="p-3 bg-gray-50 rounded">
+                    <p class="text-xs text-gray-500">订单收入</p>
+                    <p class="text-xl font-bold" style="color: #37A5E6;">¥328</p>
+                </div>
+                <div class="p-3 bg-gray-50 rounded">
+                    <p class="text-xs text-gray-500">补贴奖励</p>
+                    <p class="text-xl font-bold" style="color: #37A5E6;">¥45</p>
+                </div>
+                <div class="p-3 bg-gray-50 rounded">
+                    <p class="text-xs text-gray-500">扣款明细</p>
+                    <p class="text-xl font-bold" style="color: #37A5E6;">¥12</p>
+                </div>
+                <div class="p-3 bg-gray-50 rounded">
+                    <p class="text-xs text-gray-500">基础配送费</p>
+                    <p class="text-xl font-bold" style="color: #37A5E6;">¥286</p>
+                </div>
+            </div>
+            <p class="text-xs text-gray-500 mt-3">*数据基于您最近7天的配送记录</p>
+        </div>
+    </div>
+
+    <!-- 骑手专属维权入口 + 维权路径参考 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">骑手专属维权入口</h2>
+            <div class="bg-white p-4 rounded-lg">
+                <h3 class="text-sm font-medium mb-2">维权提报</h3>
+                <div class="space-y-3">
+                    <select class="w-full border border-primary-200 rounded-lg p-2">
+                        <option>配送纠纷</option>
+                        <option>薪资异议</option>
+                        <option>订单投诉</option>
+                        <option>平台误判</option>
+                        <option>其他</option>
+                    </select>
+                    <div class="border border-dashed border-primary-200 rounded-lg p-3 text-center text-gray-500 text-sm">
+                        上传相关凭证
+                    </div>
+                    <button class="w-full py-2 text-white rounded-lg" style="background-color: #37A5E6;">提交</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">维权路径参考</h2>
+            <div class="bg-white p-4 rounded-lg">
+                <ul class="space-y-2 text-sm">
+                    <li class="border-b pb-2">
+                        <span class="font-medium">平台内部申诉</span>
+                        <p class="text-xs text-gray-500">处理时间：3-5个工作日</p>
+                    </li>
+                    <li class="border-b pb-2">
+                        <span class="font-medium">劳动监察投诉</span>
+                        <p class="text-xs text-gray-500">处理时间：7-15个工作日</p>
+                    </li>
+                    <li>
+                        <span class="font-medium">法律援助</span>
+                        <p class="text-xs text-gray-500">对接专业律师咨询</p>
+                    </li>
+                </ul>
+                <button class="w-full mt-3 py-2 border border-primary-200 rounded-lg text-sm">维权服务对接窗口</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 安全与保险保障 -->
+    <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+        <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">安全与保险保障</h2>
+        <div class="bg-white p-4 rounded-lg">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="text-sm font-medium text-orange-600 mb-2">安全出行提醒</h3>
+                    <p class="text-sm">恶劣天气预警：明日有雨，请注意减速慢行</p>
+                    <p class="text-sm mt-1">夜间配送提示：22:00后配送建议开启实时位置共享</p>
+                </div>
+                <div>
+                    <h3 class="text-sm font-medium text-red-600 mb-2">高危路段标注预警</h3>
+                    <p class="text-sm">XX路段施工中，建议绕行</p>
+                    <p class="text-sm mt-1">XX路段事故多发，请谨慎驾驶</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

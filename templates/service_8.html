@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}数据驱动增长服务 - 数察{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <!-- 页面标题 -->
+    <div class="bg-primary-50 rounded-xl p-6 border border-primary-200">
+        <h1 class="text-2xl font-bold" style="color: #37A5E6;">数据驱动增长服务</h1>
+        <p class="text-gray-600 mt-2">个性化分析报告 · 竞争情报监控</p>
+    </div>
+
+    <!-- 两大核心功能 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 个性化分析报告 -->
+        <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">个性化分析报告</h2>
+            <div class="bg-white p-4 rounded-lg space-y-4">
+                <p class="text-sm text-gray-600">基于商家数据，定制以下策略：</p>
+                <ul class="space-y-2">
+                    <li class="flex items-start">
+                        <span class="inline-block w-1.5 h-1.5 rounded-full mt-1.5 mr-2" style="background-color: #37A5E6;"></span>
+                        <span class="text-sm">营销策略定制：根据用户画像和消费时段，优化推广方案</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="inline-block w-1.5 h-1.5 rounded-full mt-1.5 mr-2" style="background-color: #37A5E6;"></span>
+                        <span class="text-sm">库存优化方案：基于销量预测，建议安全库存和补货周期</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="inline-block w-1.5 h-1.5 rounded-full mt-1.5 mr-2" style="background-color: #37A5E6;"></span>
+                        <span class="text-sm">广告投放建议：分析ROI，推荐最优投放渠道和时段</span>
+                    </li>
+                </ul>
+                <button class="w-full py-2 text-white rounded-lg mt-2" style="background-color: #37A5E6;">申请定制报告</button>
+            </div>
+        </div>
+
+        <!-- 竞争情报监控 -->
+        <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+            <h2 class="text-lg font-semibold mb-3" style="color: #37A5E6;">竞争情报监控</h2>
+            <div class="bg-white p-4 rounded-lg space-y-4">
+                <p class="text-sm text-gray-600">实时追踪核心竞品动态：</p>
+                <div class="space-y-3">
+                    <div class="border-b pb-2">
+                        <p class="text-sm font-medium">竞品A</p>
+                        <p class="text-xs text-gray-500">昨日销量：+12% | 新品上架：3款 | 活动：满减促销</p>
+                    </div>
+                    <div class="border-b pb-2">
+                        <p class="text-sm font-medium">竞品B</p>
+                        <p class="text-xs text-gray-500">昨日销量：-3% | 价格调整：2款降价 | 评价：新增好评45条</p>
+                    </div>
+                    <div class="border-b pb-2">
+                        <p class="text-sm font-medium">竞品C</p>
+                        <p class="text-xs text-gray-500">昨日销量：+5% | 广告投放：增加搜索投放 | 热销商品：xx套餐</p>
+                    </div>
+                </div>
+                <button class="w-full py-2 border border-primary-200 rounded-lg mt-2" style="color: #37A5E6;">设置监控提醒</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 增值服务说明 -->
+    <div class="bg-primary-50 rounded-xl p-5 border border-primary-200">
+        <div class="bg-white p-4 rounded-lg">
+            <p class="text-sm text-gray-600">本服务为增值服务，主要对接合作伙伴。如需深度合作，请联系我们。</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="{{ url_for('business') }}" class="px-4 py-2 border border-primary-200 rounded-lg text-sm" style="color: #37A5E6;">返回商务服务</a>
+                <button class="px-4 py-2 text-white rounded-lg text-sm" style="background-color: #37A5E6;">联系合作</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

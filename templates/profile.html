@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block title %}个人中心 - 数察{% endblock %}
+
+{% block content %}
+<div style="max-width: 900px; margin: 0 auto; padding: 2rem 1rem;">
+    <h1 style="text-align: center; margin-bottom: 2rem;">个人中心</h1>
+
+    <!-- 状态切换按钮 -->
+    <div style="text-align: center; margin: 1rem 0;">
+        <button id="btn-show-login" style="margin: 0 0.5rem; padding: 0.5rem 1.5rem; cursor: pointer; background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 4px;">① 注册/登录界面</button>
+        <button id="btn-show-loggedin" style="margin: 0 0.5rem; padding: 0.5rem 1.5rem; cursor: pointer; background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 4px;">② 登录后界面</button>
+    </div>
+
+    <!-- 状态①：注册/登录界面（默认显示） -->
+    <div id="state-login" style="display: block;">
+        <div style="background: white; border-radius: 10px; padding: 2rem; margin: 1.5rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid #eee;">
+            <h2 style="margin-top: 0;">注册 / 登录</h2>
+            <div style="margin-bottom: 1.2rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #555;">选择身份</label>
+                <select id="user-type" style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+                    <option value="merchant">商家</option>
+                    <option value="consumer">消费者</option>
+                    <option value="rider">骑手</option>
+                </select>
+            </div>
+            <div style="margin-bottom: 1.2rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #555;">账号</label>
+                <input type="text" id="username" placeholder="请输入手机号或邮箱" style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+            </div>
+            <div style="margin-bottom: 1.2rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #555;">密码</label>
+                <input type="password" id="password" placeholder="请输入密码" style="width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+            </div>
+            <button id="btn-login" style="background-color: #0066cc; color: white; border: none; padding: 1rem 2rem; border-radius: 6px; font-size: 1rem; cursor: pointer; width: 100%; margin-top: 1rem;">登录 / 注册</button>
+            <p style="text-align: center; margin-top: 1.5rem; color: #666; font-size: 0.9em;">
+                （这是一个演示。点击按钮将模拟登录，切换到"登录后"状态。）
+            </p>
+        </div>
+    </div>
+
+    <!-- 状态②：登录后界面（默认隐藏） -->
+    <div id="state-loggedin" style="display: none;">
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
+            <!-- 左侧：个人信息 -->
+            <div style="background: white; border-radius: 10px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid #eee;">
+                <h3 style="margin-top: 0;">个人信息</h3>
+                <p><strong>用户名：</strong>演示用户</p>
+                <p><strong>身份：</strong>商家</p>
+                <p><strong>注册时间：</strong>2025-01-01</p>
+                <hr style="margin: 1.5rem 0;">
+                <h4>设置</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;"><a href="#" style="color: #333; text-decoration: none;">修改密码</a></li>
+                    <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;"><a href="#" style="color: #333; text-decoration: none;">通知偏好</a></li>
+                    <li style="padding: 0.8rem 0;"><a href="#" style="color: #333; text-decoration: none;">账户安全</a></li>
+                </ul>
+            </div>
+            <!-- 右侧：记录与进度 -->
+            <div>
+                <div style="background: white; border-radius: 10px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid #eee;">
+                    <h3 style="margin-top: 0;">数据分析记录</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;"><a href="{{ url_for('service_6') }}" style="color: #333; text-decoration: none;">最近一次流量诊断报告 (2025-03-20)</a></li>
+                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;"><a href="{{ url_for('service_8') }}" style="color: #333; text-decoration: none;">季度增长服务建议 (2025-Q1)</a></li>
+                        <li style="padding: 0.8rem 0;"><a href="#" style="color: #333; text-decoration: none;">历史记录归档</a></li>
+                    </ul>
+                </div>
+                <div style="background: white; border-radius: 10px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid #eee;">
+                    <h3 style="margin-top: 0;">服务历史记录 / 现有进度</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;"><a href="{{ url_for('service_7') }}" style="color: #333; text-decoration: none;"><strong>协同谈判：</strong> "费率调整"议题 (进行中)</a></li>
+                        <li style="padding: 0.8rem 0; border-bottom: 1px solid #eee;"><a href="{{ url_for('service_10') }}" style="color: #333; text-decoration: none;"><strong>维权工具：</strong> 订单争议处理 (已完成)</a></li>
+                        <li style="padding: 0.8rem 0;"><a href="{{ url_for('service_13') }}" style="color: #333; text-decoration: none;"><strong>权益保障：</strong> 保险咨询案例</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <button id="btn-logout" style="background-color: #666; color: white; border: none; padding: 0.8rem 2rem; border-radius: 6px; font-size: 1rem; cursor: pointer;">退出登录</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// 直接操作内联样式，保证100%生效
+function showLogin() {
+    document.getElementById('state-login').style.display = 'block';
+    document.getElementById('state-loggedin').style.display = 'none';
+}
+
+function showLoggedIn() {
+    document.getElementById('state-login').style.display = 'none';
+    document.getElementById('state-loggedin').style.display = 'block';
+}
+
+// 页面加载完成后绑定事件
+document.addEventListener('DOMContentLoaded', function() {
+    // 绑定顶部切换按钮
+    var btnLoginUI = document.getElementById('btn-show-login');
+    var btnLoggedinUI = document.getElementById('btn-show-loggedin');
+    if (btnLoginUI) btnLoginUI.addEventListener('click', showLogin);
+    if (btnLoggedinUI) btnLoggedinUI.addEventListener('click', showLoggedIn);
+    
+    // 绑定登录按钮（模拟登录）
+    var btnLogin = document.getElementById('btn-login');
+    if (btnLogin) btnLogin.addEventListener('click', showLoggedIn);
+    
+    // 绑定退出按钮
+    var btnLogout = document.getElementById('btn-logout');
+    if (btnLogout) btnLogout.addEventListener('click', showLogin);
+    
+    // 初始状态：显示登录界面
+    showLogin();
+});
+</script>
+{% endblock %}
